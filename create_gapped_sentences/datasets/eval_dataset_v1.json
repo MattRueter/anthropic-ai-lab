@@ -1,0 +1,175 @@
+{
+  "dataset_name": "gapped_sentence_eval_set_v1",
+  "requests":  
+    [
+      {
+        "level": "A1",
+        "morphology": false,
+        "multi_choice": false,
+        "words": [
+          { "word": "dog", "language": "en", "meanings": ["perro"] },
+          { "word": "house", "language": "en", "meanings": ["casa"] }
+        ]
+      },
+      {
+        "level": "A1",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "book", "language": "en", "meanings": ["libro"] },
+          { "word": "read", "language": "en", "meanings": ["leer"] }
+        ]
+      },
+      {
+        "level": "A2",
+        "morphology": true,
+        "multi_choice": false,
+        "register": "informal",
+        "words": [
+          { "word": "play", "language": "en", "meanings": ["jugar"] },
+          { "word": "friend", "language": "en", "meanings": ["amigo"] },
+          { "word": "call", "language": "en", "meanings": ["llamar"] }
+        ]
+      },
+      {
+        "level": "B1",
+        "morphology": false,
+        "multi_choice": true,
+        "words": [
+          { "word": "change", "language": "en", "meanings": ["cambio", "cambiar"] },
+          { "word": "plan", "language": "en", "meanings": ["plan", "planear"] }
+        ]
+      },
+      {
+        "level": "B1",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "run", "language": "en", "meanings": ["correr", "dirigir"] },
+          { "word": "study", "language": "en", "meanings": ["estudiar", "estudio"] },
+          { "word": "open", "language": "en", "meanings": ["abrir", "abierto"] }
+        ]
+      },
+      {
+        "level": "B2",
+        "morphology": true,
+        "register": "formal",
+        "multi_choice": true,
+        "words": [
+          { "word": "establish", "language": "en", "meanings": ["establecer"] },
+          { "word": "policy", "language": "en", "meanings": ["política"] },
+          { "word": "increase", "language": "en", "meanings": ["aumentar"] }
+        ]
+      },
+      {
+        "level": "B2",
+        "morphology": false,
+        "multi_choice": false,
+        "words": [
+          { "word": "decision", "language": "en", "meanings": ["decisión"] },
+          { "word": "evidence", "language": "en", "meanings": ["evidencia"] },
+          { "word": "result", "language": "en", "meanings": ["resultado"] }
+        ]
+      },
+      {
+        "level": "C1",
+        "morphology": true,
+        "register": "formal",
+        "multi_choice": true,
+        "words": [
+          { "word": "allocate", "language": "en", "meanings": ["asignar"] },
+          { "word": "strategy", "language": "en", "meanings": ["estrategia"] },
+          { "word": "negotiate", "language": "en", "meanings": ["negociar"] }
+        ]
+      },
+      {
+        "level": "C2",
+        "morphology": true,
+        "register": "formal",
+        "multi_choice": true,
+        "words": [
+          { "word": "mitigate", "language": "en", "meanings": ["mitigar"] },
+          { "word": "constraint", "language": "en", "meanings": ["restricción"] },
+          { "word": "sustain", "language": "en", "meanings": ["sostener"] },
+          { "word": "allocate", "language": "en", "meanings": ["asignar"] }
+        ]
+      },
+      {
+        "level": "B2",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "support", "language": "en", "meanings": ["apoyar", "apoyo"] },
+          { "word": "research", "language": "en", "meanings": ["investigar", "investigación"] },
+          { "word": "improve", "language": "en", "meanings": ["mejorar"] },
+          { "word": "reduce", "language": "en", "meanings": ["reducir"] },
+          { "word": "develop", "language": "en", "meanings": ["desarrollar"] }
+        ]
+      },
+      {
+        "level": "B1",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "light", "language": "en", "meanings": ["luz", "ligero"] },
+          { "word": "break", "language": "en", "meanings": ["romper", "descanso"] }
+        ]
+      },
+      {
+        "level": "A2",
+        "morphology": false,
+        "multi_choice": true,
+        "words": [
+          { "word": "eat", "language": "en", "meanings": ["comer"] },
+          { "word": "drink", "language": "en", "meanings": ["beber"] }
+        ]
+      },
+      {
+        "level": "B2",
+        "morphology": true,
+        "multi_choice": false,
+        "words": [
+          { "word": "approach", "language": "en", "meanings": ["enfoque", "acercarse"] },
+          { "word": "consider", "language": "en", "meanings": ["considerar"] },
+          { "word": "issue", "language": "en", "meanings": ["problema"] }
+        ]
+      },
+      {
+        "level": "C1",
+        "morphology": false,
+        "multi_choice": true,
+        "words": [
+          { "word": "insight", "language": "en", "meanings": ["perspectiva"] },
+          { "word": "proposal", "language": "en", "meanings": ["propuesta"] }
+        ]
+      },
+      {
+        "multi_choice": false,
+        "words": [
+          { "word": "car", "language": "en", "meanings": ["coche"] },
+          { "word": "drive", "language": "en", "meanings": ["conducir"] }
+        ]
+      },
+      {
+        "level": "B1",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "watch", "language": "en", "meanings": ["mirar", "reloj"] },
+          { "word": "meeting", "language": "en", "meanings": ["reunión"] },
+          { "word": "arrive", "language": "en", "meanings": ["llegar"] }
+        ]
+      },
+      {
+        "level": "B2",
+        "morphology": true,
+        "multi_choice": true,
+        "words": [
+          { "word": "analysis", "language": "en", "meanings": ["análisis"] },
+          { "word": "impact", "language": "en", "meanings": ["impacto"] },
+          { "word": "project", "language": "en", "meanings": ["proyecto"] },
+          { "word": "data", "language": "en", "meanings": ["datos"] }
+        ]
+      }
+    ]
+}
