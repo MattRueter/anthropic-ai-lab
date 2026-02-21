@@ -1,4 +1,6 @@
 claude-env/
+.venv/
 .env
-
+__init__.py
+__pycache__
 notes.md
