@@ -58,7 +58,7 @@ Important. Do **not** include ```json codeblock or trailing ```
 
 <example JSON response>
 {
-  "results": [
+  "response": [
     {
       "word": "justice",
       "answer": "justice",

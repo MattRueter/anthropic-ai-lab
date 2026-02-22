@@ -1,8 +1,9 @@
 import json
+from pprint import pprint
 from pathlib import Path
 from gapped_sentences import generate_gapped_sentences
 
-#get json file and unpack "example_requests array and JSONify"
+#get json file and unpack "example_requests list.
 req_json = Path("single_req.json").read_text(encoding="utf-8")
 req_json = json.loads(req_json)
 req_json = req_json["example_requests"]
@@ -19,11 +20,19 @@ prompt = prompt_path.read_text(encoding="utf-8")
 ##################################################################
 ## Write helper functions here and then move to root. ----------------------------------------
 
-def iterator(prompt, reqs):
+def iterator(generate, prompt, reqs):
   results = []
-  
+
   for req in reqs:
-    results.append(req)
+    
+    #serialize as json for request to LLM
+    req = json.dumps(req)
+    response = generate(prompt, req)
+
+    #turn back into python list
+    result = json.loads(response)
+    
+    results.append(response)
   return results
 
 
@@ -34,12 +43,23 @@ def iterator(prompt, reqs):
 
 
 # generation function
-def run_eval_suite(generate=False, prompt=False, req=False, results_path=False, evaluate=False, eval_prompt=False, evaluation_results_path=False):
+def run_eval_suite(
+  generate=False, 
+  prompt=False, 
+  req=False, 
+  results_path=False, 
+  evaluate=False, 
+  eval_prompt=False, 
+  evaluation_results_path=False
+  ):
+
   # call iterator and call generate on each iteration (use prompt, and req as args)
   # e.g. results = iterator(generate, prompt, req)
-
-  results = iterator(prompt, req_json)
-  print(results)
+  results = iterator(generate_gapped_sentences, prompt, req_json)
+  
+  #dev inspecting ---------------------
+  res_json = json.dumps(results)
+  pprint(res_json)
 
   # save results to file (save as json)
   # e.g. save(results_path)
