@@ -40,17 +40,17 @@
           {
             "word": "play",
             "answer": "playing",
-            "sentence": "Hey, do you wanna come over? We've been _____ video games all afternoon!"
+            "sentence": "Hey, do you want to come over? We've been _____ video games all afternoon!"
           },
           {
             "word": "friend",
             "answer": "friends",
-            "sentence": "I've known Jake since we were little kids — we've been _____ for years!"
+            "sentence": "I've known Jake since we were kids — we've been _____ for like fifteen years!"
           },
           {
             "word": "call",
             "answer": "called",
-            "sentence": "I _____ you like three times last night, why didn't you pick up?"
+            "sentence": "I _____ you like three times yesterday, why didn't you pick up?"
           }
         ]
       }
@@ -59,7 +59,7 @@
       "id": 1,
       "request": {
         "level": "B2",
-        "morphology": true,
+        "morphology": false,
         "multi_choice": false,
         "register": "formal",
         "words": [
@@ -90,18 +90,18 @@
         "response": [
           {
             "word": "establish",
-            "answer": "established",
-            "sentence": "The committee _____ a set of guidelines to ensure transparency in all financial transactions."
+            "answer": "establish",
+            "sentence": "The committee aims to _____ a set of guidelines that will govern the conduct of all employees within the organisation."
           },
           {
             "word": "policy",
-            "answer": "policies",
-            "sentence": "The government has introduced new _____ aimed at reducing carbon emissions over the next decade."
+            "answer": "policy",
+            "sentence": "The government introduced a new _____ to regulate the use of renewable energy sources across the country."
           },
           {
             "word": "increase",
-            "answer": "increasing",
-            "sentence": "There is _____ evidence to suggest that remote work improves employee productivity and well-being."
+            "answer": "increase",
+            "sentence": "The board of directors agreed to _____ the annual budget allocated to research and development by fifteen percent."
           }
         ]
       }

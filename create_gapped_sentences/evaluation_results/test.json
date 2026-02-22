@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "score": 0,
+    "number_of_cases": 2
+  },
+  "results": [
+    {
+      "id": 0,
+      "score": 9,
+      "comment": "The sentences are well-crafted for A2 level with an informal register. Morphology is correctly applied: 'playing' (present participle), 'friends' (plural noun), and 'called' (past tense) are all valid morphological variations since morphology is set to true. The sentences are natural and contextually appropriate. Minor note: 'We've been playing' and 'we've been friends' use present perfect continuous/simple which might be slightly above A2, but the overall context remains accessible. The gap-fill format is clear and unambiguous."
+    },
+    {
+      "id": 1,
+      "score": 9,
+      "comment": "The sentences are well-constructed at B2 level and maintain a formal register throughout. All three target words are used in their base form with no morphological changes, correctly following the morphology:false rule. 'establish' is used as a base infinitive after 'to', 'policy' as a noun, and 'increase' as a base infinitive after 'to'. The contexts are clear and unambiguous, making the target words identifiable. A minor deduction is made because 'increase' could potentially be replaced by synonyms like 'raise' or 'boost', making it slightly less precise as a gap-fill item."
+    }
+  ]
+}

@@ -16,7 +16,7 @@
     },
       {
       "level": "B2",
-      "morphology": true,
+      "morphology": false,
       "multi_choice": false,
       "register": "formal",
       "words": [
