@@ -4,6 +4,32 @@ from dotenv import load_dotenv
 load_dotenv()
 client = anthropic.Anthropic()
 
+schema = {
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "word": { "type": "string" },
+          "answer": { "type": "string" },
+          "incorrect_options": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "sentence": { "type": "string" }
+        },
+        "required": ["word", "answer", "sentence"],
+        "additionalProperties": False,
+      }
+    }
+  },
+  "required": ["response"],
+  "additionalProperties": False,
+}
+
+
 
 def generate_gapped_sentences(prompt, req):
   # Make a call to LLM with a single prompt and requst.
@@ -19,8 +45,13 @@ def generate_gapped_sentences(prompt, req):
             "role": "user",
             "content": req
         }
-    ]
+    ],
+    output_config={
+      "format": {
+        "type": "json_schema",
+        "schema": schema,
+      },
+    }
   )
   return message.content[0].text
-
 

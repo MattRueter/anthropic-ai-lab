@@ -56,10 +56,8 @@ def run_eval_suite(
   # call iterator and call generate on each iteration (use prompt, and req as args)
   # e.g. results = iterator(generate, prompt, req)
   results = iterator(generate_gapped_sentences, prompt, req_json)
+  print(results)
   
-  #dev inspecting ---------------------
-  res_json = json.dumps(results)
-  pprint(res_json)
 
   # save results to file (save as json)
   # e.g. save(results_path)
