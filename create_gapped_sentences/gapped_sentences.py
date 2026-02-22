@@ -21,6 +21,6 @@ def generate_gapped_sentences(prompt, req):
         }
     ]
   )
-  print(message.content)
+  return message.content[0].text
 
 
