@@ -10,6 +10,17 @@
         { "word": "friend", "language": "en", "meanings": ["amigo"] },
         { "word": "call", "language": "en", "meanings": ["llamar"] }
       ]
+    },
+      {
+      "level": "B2",
+      "morphology": true,
+      "multi_choice": false,
+      "register": "formal",
+      "words": [
+        { "word": "establish", "language": "en", "meanings": ["establecer"] },
+        { "word": "policy", "language": "en", "meanings": ["política"] },
+        { "word": "increase", "language": "en", "meanings": ["aumentar"] }
+      ]
     }
   ]
 }
