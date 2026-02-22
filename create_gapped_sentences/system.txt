@@ -54,6 +54,7 @@ The goal is to remove ambiguity. A learner should not reasonably debate whether 
 </options>
 
 Your response should be a **JSON object and nothing else**, following this schema:
+Important. Do **not** include ```json codeblock or trailing ```
 
 <example JSON response>
 {
