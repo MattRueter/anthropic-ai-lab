@@ -45,7 +45,7 @@
           {
             "word": "friend",
             "answer": "friends",
-            "sentence": "I've got so many _____ at my new school — everyone is really nice!"
+            "sentence": "I've known Jake since we were little kids — we've been _____ for years!"
           },
           {
             "word": "call",
@@ -91,7 +91,7 @@
           {
             "word": "establish",
             "answer": "established",
-            "sentence": "The committee has _____ a set of guidelines to ensure transparency in all financial transactions."
+            "sentence": "The committee _____ a set of guidelines to ensure transparency in all financial transactions."
           },
           {
             "word": "policy",
@@ -100,8 +100,8 @@
           },
           {
             "word": "increase",
-            "answer": "increasingly",
-            "sentence": "It is becoming _____ difficult for small businesses to compete in a globalised market."
+            "answer": "increasing",
+            "sentence": "There is _____ evidence to suggest that remote work improves employee productivity and well-being."
           }
         ]
       }

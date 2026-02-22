@@ -4,23 +4,30 @@ from pathlib import Path
 from gapped_sentences import generate_gapped_sentences
 
 #get json file and unpack "example_requests list.
-req_json = Path("single_req.json").read_text(encoding="utf-8")
+data_file = "single_req.json"
+req_json = Path("data/"+data_file).read_text(encoding="utf-8")
 req_json = json.loads(req_json)
 req_json = req_json["example_requests"]
 
 
 #get system prompt
-prompt_path = Path(__file__).resolve().parent /"system.txt"
+prompt_file = "system.txt"
+prompt_path = Path(__file__).resolve().parent / "prompts" / prompt_file
 prompt = prompt_path.read_text(encoding="utf-8")
 
-
+#results of intitial call saved here
+results_dir = Path(__file__).parent / "results"
+results_dir.mkdir(exist_ok=True)  # create folder if missing on initial run of this script.
+results_path = results_dir / "test.json"
 
 ##################################################################
-## Write helper functions here and then move to root. ----------------------------------------
-
-import json
-
+# Helper functions
+# These will eventually be moved into a separate file at root.
+##################################################################
 def iterator(generate, prompt, reqs):
+  # takes system prompt and example request data
+  # and calls the generate function for every case in request data
+  # returns result of calls in a python dictionary
     counter = 0
     cases = []
 
@@ -34,7 +41,7 @@ def iterator(generate, prompt, reqs):
         # serialize request for LLM
         req_json = json.dumps(req)
 
-        # call model
+        # call LLM model
         response_str = generate(prompt, req_json)
 
         # parse structured JSON response
@@ -55,26 +62,22 @@ def iterator(generate, prompt, reqs):
 
     return result
 
-def save(data, filename):
-    results_dir = Path(__file__).parent / "results"
-    results_dir.mkdir(exist_ok=True)  # create folder if missing
-
-    file_path = results_dir / filename
-
+def save(data, file_path):
     with open(file_path, mode="w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-###################################################################
+#########################//////################################
 
 
 
 
-
-# generation function
+###############################################################
+# Main function for running the evaluation. 
+###############################################################
 def run_eval_suite(
-  generate=False, 
-  prompt=False, 
-  req=False, 
+  generate=False, #the func which calls the llm
+  prompt=False,  #system prompt for the feature
+  req=False,  # request object
   results_path=False, 
   evaluate=False, 
   eval_prompt=False, 
@@ -82,13 +85,11 @@ def run_eval_suite(
   ):
 
   # call iterator and call generate on each iteration (use prompt, and req as args)
-  # e.g. results = iterator(generate, prompt, req)
   results = iterator(generate_gapped_sentences, prompt, req_json)
   print(results)
   
-
   # save results to file (save as json)
-  save(results, "test.json")
+  save(results, results_path)
 
 
   # call evaluate_iterator and call evaluate on each iteration (use evaluate, eval_prompt, and results as args )
@@ -102,5 +103,10 @@ def run_eval_suite(
 
 
 
-run_eval_suite(prompt=prompt, req=req_json)
+run_eval_suite(
+  generate=generate_gapped_sentences,
+  prompt=prompt, 
+  req=req_json, 
+  results_path=results_path
+  )
 
