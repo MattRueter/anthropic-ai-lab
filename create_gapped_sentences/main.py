@@ -21,10 +21,12 @@ prompt = prompt_path.read_text(encoding="utf-8")
 import json
 
 def iterator(generate, prompt, reqs):
+    counter = 0
     cases = []
 
     for req in reqs:
         case = {
+            "id" :counter,
             "request": req,
             "response": {}
         }
@@ -40,6 +42,8 @@ def iterator(generate, prompt, reqs):
 
         case["response"] = response_obj
         cases.append(case)
+
+        counter +=1
 
     result = {
         "meta": {

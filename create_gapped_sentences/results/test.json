@@ -5,6 +5,7 @@
   },
   "cases": [
     {
+      "id": 0,
       "request": {
         "level": "A2",
         "morphology": true,
@@ -44,17 +45,18 @@
           {
             "word": "friend",
             "answer": "friends",
-            "sentence": "I've known Jake since we were little kids, so we've been _____ for a really long time."
+            "sentence": "I've got so many _____ at my new school — everyone is really nice!"
           },
           {
             "word": "call",
             "answer": "called",
-            "sentence": "I _____ you like three times yesterday — why didn't you pick up?"
+            "sentence": "I _____ you like three times last night, why didn't you pick up?"
           }
         ]
       }
     },
     {
+      "id": 1,
       "request": {
         "level": "B2",
         "morphology": true,
@@ -89,17 +91,17 @@
           {
             "word": "establish",
             "answer": "established",
-            "sentence": "The committee _____ a new set of guidelines to ensure compliance across all departments."
+            "sentence": "The committee has _____ a set of guidelines to ensure transparency in all financial transactions."
           },
           {
             "word": "policy",
             "answer": "policies",
-            "sentence": "The government has introduced several new _____ aimed at reducing carbon emissions over the next decade."
+            "sentence": "The government has introduced new _____ aimed at reducing carbon emissions over the next decade."
           },
           {
             "word": "increase",
             "answer": "increasingly",
-            "sentence": "It has become _____ difficult for young professionals to secure affordable housing in major cities."
+            "sentence": "It is becoming _____ difficult for small businesses to compete in a globalised market."
           }
         ]
       }
