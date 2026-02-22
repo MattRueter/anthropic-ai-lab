@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "name": "dev",
+    "number_of_requests": 2
+  },
+  "cases": [
+    {
+      "request": {
+        "level": "A2",
+        "morphology": true,
+        "multi_choice": false,
+        "register": "informal",
+        "words": [
+          {
+            "word": "play",
+            "language": "en",
+            "meanings": [
+              "jugar"
+            ]
+          },
+          {
+            "word": "friend",
+            "language": "en",
+            "meanings": [
+              "amigo"
+            ]
+          },
+          {
+            "word": "call",
+            "language": "en",
+            "meanings": [
+              "llamar"
+            ]
+          }
+        ]
+      },
+      "response": {
+        "response": [
+          {
+            "word": "play",
+            "answer": "playing",
+            "sentence": "Hey, do you wanna come over? We've been _____ video games all afternoon!"
+          },
+          {
+            "word": "friend",
+            "answer": "friends",
+            "sentence": "I've known Jake since we were little kids, so we've been _____ for a really long time."
+          },
+          {
+            "word": "call",
+            "answer": "called",
+            "sentence": "I _____ you like three times yesterday — why didn't you pick up?"
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "level": "B2",
+        "morphology": true,
+        "multi_choice": false,
+        "register": "formal",
+        "words": [
+          {
+            "word": "establish",
+            "language": "en",
+            "meanings": [
+              "establecer"
+            ]
+          },
+          {
+            "word": "policy",
+            "language": "en",
+            "meanings": [
+              "política"
+            ]
+          },
+          {
+            "word": "increase",
+            "language": "en",
+            "meanings": [
+              "aumentar"
+            ]
+          }
+        ]
+      },
+      "response": {
+        "response": [
+          {
+            "word": "establish",
+            "answer": "established",
+            "sentence": "The committee _____ a new set of guidelines to ensure compliance across all departments."
+          },
+          {
+            "word": "policy",
+            "answer": "policies",
+            "sentence": "The government has introduced several new _____ aimed at reducing carbon emissions over the next decade."
+          },
+          {
+            "word": "increase",
+            "answer": "increasingly",
+            "sentence": "It has become _____ difficult for young professionals to secure affordable housing in major cities."
+          }
+        ]
+      }
+    }
+  ]
+}

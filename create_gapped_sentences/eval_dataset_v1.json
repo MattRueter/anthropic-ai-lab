@@ -1,6 +1,8 @@
 {
-  "dataset_name": "gapped_sentence_eval_set_v1",
-  "requests":  
+  "meta":{
+    "dataset_name": "gapped_sentence_eval_set_v1"
+  },
+  "example_requests":  
     [
       {
         "level": "A1",

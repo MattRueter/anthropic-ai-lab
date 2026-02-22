@@ -7,7 +7,6 @@ from gapped_sentences import generate_gapped_sentences
 req_json = Path("single_req.json").read_text(encoding="utf-8")
 req_json = json.loads(req_json)
 req_json = req_json["example_requests"]
-#req_json = json.dumps(req_json)
 
 
 #get system prompt
@@ -16,25 +15,50 @@ prompt = prompt_path.read_text(encoding="utf-8")
 
 
 
-
 ##################################################################
 ## Write helper functions here and then move to root. ----------------------------------------
 
+import json
+
 def iterator(generate, prompt, reqs):
-  results = []
+    cases = []
 
-  for req in reqs:
-    
-    #serialize as json for request to LLM
-    req = json.dumps(req)
-    response = generate(prompt, req)
+    for req in reqs:
+        case = {
+            "request": req,
+            "response": {}
+        }
 
-    #turn back into python list
-    result = json.loads(response)
-    
-    results.append(response)
-  return results
+        # serialize request for LLM
+        req_json = json.dumps(req)
 
+        # call model
+        response_str = generate(prompt, req_json)
+
+        # parse structured JSON response
+        response_obj = json.loads(response_str)
+
+        case["response"] = response_obj
+        cases.append(case)
+
+    result = {
+        "meta": {
+            "name": "dev",
+            "number_of_requests": len(reqs)
+        },
+        "cases": cases
+    }
+
+    return result
+
+def save(data, filename):
+    results_dir = Path(__file__).parent / "results"
+    results_dir.mkdir(exist_ok=True)  # create folder if missing
+
+    file_path = results_dir / filename
+
+    with open(file_path, mode="w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 ###################################################################
 
@@ -60,7 +84,8 @@ def run_eval_suite(
   
 
   # save results to file (save as json)
-  # e.g. save(results_path)
+  save(results, "test.json")
+
 
   # call evaluate_iterator and call evaluate on each iteration (use evaluate, eval_prompt, and results as args )
   # evaluation_results = evaluate_iterator(evaluate, eval_prompt, results)

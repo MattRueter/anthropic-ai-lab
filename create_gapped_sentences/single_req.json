@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "dataset_name": "simple_dataset"
+  },
   "example_requests": [
     {
       "level": "A2",
