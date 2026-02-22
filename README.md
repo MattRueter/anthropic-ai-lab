@@ -1,5 +1,5 @@
-# anthropic-ai-lab
-A place to experiment with anthropic's api.
+# Anthropic-ai-prompt-evaluation
+A prompt evaluation pipeline.
 
 ## running environment for first time
 python3 -m venv .venv
