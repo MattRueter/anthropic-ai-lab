@@ -40,17 +40,17 @@
           {
             "word": "play",
             "answer": "playing",
-            "sentence": "Hey, do you want to come over? We've been _____ video games all afternoon!"
+            "sentence": "Hey, are you _____ video games again? You've been on that console all day!"
           },
           {
             "word": "friend",
             "answer": "friends",
-            "sentence": "I've known Jake since we were kids — we've been _____ for like fifteen years!"
+            "sentence": "Me and my _____ are going to the mall later, wanna come?"
           },
           {
             "word": "call",
             "answer": "called",
-            "sentence": "I _____ you like three times yesterday, why didn't you pick up?"
+            "sentence": "I _____ you like three times last night, why didn't you pick up?"
           }
         ]
       }
@@ -91,17 +91,17 @@
           {
             "word": "establish",
             "answer": "establish",
-            "sentence": "The committee aims to _____ a set of guidelines that will govern the conduct of all employees within the organisation."
+            "sentence": "The committee aims to _____ a set of guidelines that all departments must follow."
           },
           {
             "word": "policy",
             "answer": "policy",
-            "sentence": "The government introduced a new _____ to regulate the use of renewable energy sources across the country."
+            "sentence": "The government introduced a new _____ to regulate the use of renewable energy sources."
           },
           {
             "word": "increase",
             "answer": "increase",
-            "sentence": "The board of directors agreed to _____ the annual budget allocated to research and development by fifteen percent."
+            "sentence": "The board has proposed measures to _____ funding for public health initiatives."
           }
         ]
       }
