@@ -10,7 +10,6 @@ from evaluate_gapped_sentences import evaluate_gapped_sentences
 data_file = "single_req.json"
 req_json = Path("data/"+data_file).read_text(encoding="utf-8")
 req_dict = json.loads(req_json)
-req_dict = req_dict["example_requests"]
 
 
 #get system prompt
@@ -26,14 +25,13 @@ eval_prompt = eval_prompt_path.read_text(encoding="utf-8")
 #results of intitial call saved here
 results_dir = Path(__file__).parent / "results"
 results_dir.mkdir(exist_ok=True)  # create folder if missing on initial run of this script.
-results_path = results_dir / "test.json"
-
+results_path = results_dir / "response.json"
 
 
 #results of evaluation saved here
 evaluation_results_dir = Path(__file__).parent / "evaluation_results"
 evaluation_results_dir.mkdir(exist_ok=True) # create folder on initial run of this script
-evaluation_results_path = evaluation_results_dir / "test.json"
+evaluation_results_path = evaluation_results_dir / "evaluation.json"
 
 ##################################################################
 # Helper functions
@@ -44,11 +42,11 @@ def iterator(generate, prompt, reqs):
   # and calls the generate function for every case in request data
   # returns result of calls in a python dictionary. 
   # returned result includes both original request object and LLM response.
-
+    req_dict = reqs["example_requests"] #get requests and ignore metadata
     counter = 0
     cases = []
 
-    for req in reqs:
+    for req in req_dict:
         case = {
             "id" :counter,
             "request": req,
@@ -71,7 +69,7 @@ def iterator(generate, prompt, reqs):
 
     result = {
         "meta": {
-            "name": "dev",
+            "dataset_name": reqs["meta"]["dataset_name"],
             "number_of_requests": len(reqs)
         },
         "cases": cases
@@ -79,33 +77,34 @@ def iterator(generate, prompt, reqs):
 
     return result
 
-def evaluate_iterator(generate, prompt, reqs):
-  results = []
-  for req in reqs:
+def evaluate_iterator(generate, prompt, results):
+  cases = results["cases"] #get the cases ignore metadata
+  evaluations = []
+  for case in cases:
     # serialize request for LLM
-    req_json = json.dumps(req)
+    case_json = json.dumps(case)
 
     # call LLM model
-    response_str = generate(prompt, req_json)
+    response_str = generate(prompt, case_json)
 
     # parse structured JSON response
     response_obj = json.loads(response_str)
-    results.append(response_obj)
+    evaluations.append(response_obj)
   
   result = {
     "meta":{
+      "dataset_name": results["meta"]["dataset_name"],
       "score" : 0,
-      "number_of_cases" :len(reqs),
+      "number_of_cases" :len(cases),
     },
-    "eval_results": results,
+    "eval_results": evaluations,
   }
 
   return result
 
 def save(data, file_path):
     with open(file_path, mode="w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
+        json.dump(data, f, ensure_ascii=False, indent=2)  
 #########################//////################################
 
 
@@ -115,46 +114,35 @@ def save(data, file_path):
 # Main function for running the evaluation. 
 ###############################################################
 def run_eval_suite(
-  generate=False, # the func which calls the llm
-  prompt=False,  # system prompt for the feature (prompt being evaluated)
-  reqs=False,  # original request object as python dict
-  results_path=False, # location to save the results
-  evaluate=False, # evaluation function calls the LLM to compare req and responses
-  eval_prompt=False, # evaluation prompt
-  evaluation_results_path=False # location to save evaluation results
+  generate, # the func which calls the llm
+  prompt,  # system prompt for the feature (prompt being evaluated)
+  reqs,  # original request object as python dict
+  results_path, # location to save the results
+  evaluate, # evaluation function calls the LLM to compare req and responses
+  eval_prompt, # evaluation prompt
+  evaluation_results_path # location to save evaluation results
   ):
 
   # Make initial call to LLM with example data
-  results = iterator(generate_gapped_sentences, prompt, reqs)
-  print(results)
+  results = iterator(generate, prompt, reqs)
   
   # save results
   save(results, results_path)
 
 
   # Evaluate the results.
-  results = results["cases"] #get the cases ignore metadata
-  evaluation = evaluate_iterator(evaluate_gapped_sentences, eval_prompt, results )
+  evaluation = evaluate_iterator(evaluate, eval_prompt, results )
 
-  ##before saving do the following:
-  # 1. average score and update evaluation["meta"]["score"]
-  # 2. get a overall comment and update evaluation["meta"]["summary"]  
+  ##before saving average the scores of the evaluation
   evals = evaluation["eval_results"]
   scores = []
+
   for eval in evals:
     scores.append(eval["score"])
   
   score_sum = sum(scores)
   avg = score_sum / len(scores)
-  
-
-  evaluation["meta"]["score"] = avg
-
-
-
-  # get average score. Call calculate_score (use evaluation_results as args). 
-  #  - 
-  # write score message and append to file at evaluation_results_path
+  evaluation["meta"]["score"] = avg #update the metadata with the average score.
   
   # save evaluation_results to file (save as json)
   save(evaluation, evaluation_results_path)

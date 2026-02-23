@@ -1,6 +1,6 @@
 {
   "meta": {
-    "name": "dev",
+    "dataset_name": "simple_dataset",
     "number_of_requests": 2
   },
   "cases": [
@@ -10,7 +10,7 @@
         "level": "A2",
         "morphology": true,
         "multi_choice": false,
-        "register": "informal",
+        "register": "formal",
         "words": [
           {
             "word": "play",
@@ -40,17 +40,17 @@
           {
             "word": "play",
             "answer": "playing",
-            "sentence": "Hey, are you _____ video games again? You've been on that console all day!"
+            "sentence": "The children are _____ in the park after school today."
           },
           {
             "word": "friend",
             "answer": "friends",
-            "sentence": "Me and my _____ are going to the mall later, wanna come?"
+            "sentence": "She has made several new _____ since she joined the school last year."
           },
           {
             "word": "call",
             "answer": "called",
-            "sentence": "I _____ you like three times last night, why didn't you pick up?"
+            "sentence": "The manager _____ the office to inform them about the meeting."
           }
         ]
       }
@@ -61,7 +61,7 @@
         "level": "B2",
         "morphology": false,
         "multi_choice": false,
-        "register": "formal",
+        "register": "informal",
         "words": [
           {
             "word": "establish",
@@ -71,10 +71,10 @@
             ]
           },
           {
-            "word": "policy",
+            "word": "brave",
             "language": "en",
             "meanings": [
-              "política"
+              "valiente"
             ]
           },
           {
@@ -91,17 +91,17 @@
           {
             "word": "establish",
             "answer": "establish",
-            "sentence": "The committee aims to _____ a set of guidelines that all departments must follow."
+            "sentence": "We need to _____ some ground rules before we start working together, or things are gonna get messy."
           },
           {
-            "word": "policy",
-            "answer": "policy",
-            "sentence": "The government introduced a new _____ to regulate the use of renewable energy sources."
+            "word": "brave",
+            "answer": "brave",
+            "sentence": "It was really _____ of her to speak up in front of the whole school like that."
           },
           {
             "word": "increase",
             "answer": "increase",
-            "sentence": "The board has proposed measures to _____ funding for public health initiatives."
+            "sentence": "If you want to _____ your chances of getting the job, you should probably update your resume."
           }
         ]
       }

@@ -7,7 +7,7 @@
       "level": "A2",
       "morphology": true,
       "multi_choice": false,
-      "register": "informal",
+      "register": "formal",
       "words": [
         { "word": "play", "language": "en", "meanings": ["jugar"] },
         { "word": "friend", "language": "en", "meanings": ["amigo"] },
@@ -18,10 +18,10 @@
       "level": "B2",
       "morphology": false,
       "multi_choice": false,
-      "register": "formal",
+      "register": "informal",
       "words": [
         { "word": "establish", "language": "en", "meanings": ["establecer"] },
-        { "word": "policy", "language": "en", "meanings": ["política"] },
+        { "word": "brave", "language": "en", "meanings": ["valiente"] },
         { "word": "increase", "language": "en", "meanings": ["aumentar"] }
       ]
     }
