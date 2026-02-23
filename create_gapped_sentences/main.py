@@ -2,13 +2,13 @@ import json
 from dotenv import load_dotenv
 from pprint import pprint
 from pathlib import Path
-from gapped_sentences import generate_gapped_sentences
-from evaluate_gapped_sentences import evaluate_gapped_sentences
-
+from create_gapped_sentences.gapped_sentences import generate_gapped_sentences
+from create_gapped_sentences.evaluate_gapped_sentences import evaluate_gapped_sentences
+from eval_suite.run_eval_suite import run_eval_suite
 
 #get json file and unpack "example_requests list.
-data_file = "single_req.json"
-req_json = Path("data/"+data_file).read_text(encoding="utf-8")
+data_file = "single_req.json" # CHANGE THIS TO TEST DIFFERENT SETS OF REQUESTS.
+req_json = (Path(__file__).resolve().parent / "data" / data_file).read_text(encoding="utf-8")
 req_dict = json.loads(req_json)
 
 
@@ -32,125 +32,6 @@ results_path = results_dir
 evaluation_results_dir = Path(__file__).parent / "evaluation_results"
 evaluation_results_dir.mkdir(exist_ok=True) # create folder on initial run of this script
 evaluation_results_path = evaluation_results_dir 
-
-##################################################################
-# Helper functions
-# These will eventually be moved into a separate file at root.
-##################################################################
-def iterator(generate, prompt, reqs):
-  # takes system prompt and example request data
-  # and calls the generate function for every case in request data
-  # returns result of calls in a python dictionary. 
-  # returned result includes both original request object and LLM response.
-    metaData = reqs["meta"] #get metadata
-    req_dict = reqs["data"] #get requests and ignore metadata
-
-    counter = 0
-    cases = []
-
-    for req in req_dict:
-        case = {
-            "id" :counter,
-            "request": req,
-            "response": {}
-        }
-
-        # serialize request for LLM
-        req_json = json.dumps(req)
-
-        # call LLM model
-        response_str = generate(prompt, req_json)
-
-        # parse structured JSON response
-        response_obj = json.loads(response_str)
-
-        case["response"] = response_obj
-        cases.append(case)
-
-        counter +=1
-
-    result = {
-        "meta": {
-          **metaData,
-          "number_of_cases": len(reqs)
-        },
-        "data": cases
-    }
-
-    return result
-
-def evaluate_iterator(generate, prompt, results):
-  metaData = results["meta"]
-  cases = results["data"] #get the cases ignore metadata
-  
-  evaluations = []
-  for case in cases:
-    # serialize request for LLM
-    case_json = json.dumps(case)
-
-    # call LLM model
-    response_str = generate(prompt, case_json)
-
-    # parse structured JSON response
-    response_obj = json.loads(response_str)
-    evaluations.append(response_obj)
-  
-  result = {
-    "meta": metaData,
-    "data": evaluations,
-  }
-
-  return result
-
-def save(data, file_path):
-    with open(file_path, mode="w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)  
-#########################//////################################
-
-
-
-
-###############################################################
-# Main function for running the evaluation. 
-###############################################################
-def run_eval_suite(
-  generate, # the func which calls the llm (func being evalutated)
-  prompt,  # system prompt for the feature (prompt being evaluated)
-  reqs,  # original request object as python dict
-  results_path, # location to save the results
-  evaluate, # evaluation function calls the LLM to compare req and responses
-  eval_prompt, # evaluation prompt
-  evaluation_results_path # location to save evaluation results
-  ):
-  
-  # Append file name to path for current dataset.
-  results_path = results_dir / reqs["meta"]["file_name"]
-  evaluation_results_path = evaluation_results_dir  / reqs["meta"]["file_name"]
-
-
-  # Make initial call to LLM with example data
-  results = iterator(generate, prompt, reqs)
-  
-  # save results
-  save(results, results_path)
-
-
-  # Evaluate the results.
-  evaluation = evaluate_iterator(evaluate, eval_prompt, results )
-
-  ##before saving average the scores of the evaluation
-  evals = evaluation["data"]
-  scores = []
-
-  for eval in evals:
-    scores.append(eval["score"])
-  
-  score_sum = sum(scores)
-  avg = score_sum / len(scores) if scores else 0
-  evaluation["meta"]["average_score"] = avg
-  
-  # save evaluation_results to file (save as json)
-  save(evaluation, evaluation_results_path)
 
 
 
