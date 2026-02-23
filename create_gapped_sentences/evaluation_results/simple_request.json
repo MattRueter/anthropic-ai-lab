@@ -3,7 +3,7 @@
     "file_name": "simple_request.json",
     "dataset_name": "simple_dataset",
     "number_of_cases": 2,
-    "average_score": 9.25,
+    "average_score": 9.0,
     "summary": "",
     "description": ""
   },
@@ -11,12 +11,12 @@
     {
       "id": 0,
       "score": 9,
-      "comment": "The sentences are well-constructed for A2 level with a formal register. Morphology is correctly applied: 'playing' (present participle), 'friends' (plural), and 'called' (past tense) are all valid morphological variations. The gaps are clear and contextually appropriate. Minor note: 'The children are _____ in the park after school today' is slightly informal in tone, but overall the sentences meet the requirements well."
+      "comment": "The sentences are well-constructed for A2 level and use a formal register appropriately. Morphology is correctly applied: 'playing' (present participle), 'friends' (plural), and 'called' (past tense) are all valid morphological variations. The gaps are clear and contextually meaningful. Minor note: 'The children are _____ in the park after school today' is slightly informal in tone, but overall the sentences meet the requirements well."
     },
     {
       "id": 1,
-      "score": 9.5,
-      "comment": "Excellent response overall. All three sentences are well-suited to B2 level and use an informal register naturally. Morphology is correctly respected: 'establish', 'brave', and 'increase' are all used in their base forms without any inflection. The gaps are clearly positioned and the sentences provide sufficient context for learners to identify the correct word. Minor deduction because 'brave' as an adjective in its base form is straightforward, leaving little ambiguity or challenge for a B2 learner, but it remains appropriate and correct."
+      "score": 9,
+      "comment": "The sentences are well-crafted for B2 level with an informal register. All three words are used in their base form as required by morphology=false. 'Establish' fits naturally in the trust context, 'brave' works as an adjective correctly, and 'increase' is used appropriately as a verb. The sentences are engaging and contextually natural for informal speech. Minor deduction as 'establish' in an informal context could feel slightly formal, though it is acceptable at B2 level."
     }
   ]
 }
