@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "file_name": "starter_dataset.json",
+    "dataset_name": "simple_dataset",
+    "number_of_cases": 2,
+    "average_score": 2.2733333333333334,
+    "summary": "",
+    "description": "Using this to check pipeline across features."
+  },
+  "data": [
+    {
+      "id": 0,
+      "score": 0.82,
+      "comment": "Overall, these are solid keyword transformation exercises that test a range of structures using 'think' and its forms. Sentence 1 tests a simple opinion structure ('I think the new policy is a mistake'), which is straightforward and appropriate. Sentence 2 tests 'thinking about/of + gerund' for considering, which is a good transformation. Sentence 3 tests the passive reporting structure 'is thought to', which is a valuable B2/C1 level structure. Sentence 4 similarly tests the passive 'are thought to be', another good advanced structure. Sentence 5 tests 'What do you think of/about', a useful fixed expression. The exercises cover a nice variety of grammatical structures and difficulty levels. Minor concern: Sentence 3 uses 'THOUGHT' as the key but the natural answer would use 'is thought', so the tense label is slightly misleading. No phrasal verbs are used in any of the sentences, which is good. The exercises are well-suited for B2-level learners."
+    },
+    {
+      "id": 1,
+      "score": 0,
+      "comment": "Automatic score of 0: the word provided is a phrasal verb ('take off')."
+    },
+    {
+      "id": 2,
+      "score": 6,
+      "comment": "The exercises are mostly solid, but there are some issues. Sentence 1 ('foot the bill') is a good classic transformation. Sentence 2 ('on foot') works well and is straightforward. Sentence 3 has a structural problem — 'put his foot in it' is a phrasal verb, which automatically scores this 0 per the rules. Additionally, the sentence as written is grammatically incomplete and awkward. Sentence 4 ('got off on the wrong foot') is a good idiomatic transformation, though 'got off' could be considered a phrasal verb, which is borderline. Sentence 5 ('find her feet') is natural and well-constructed. Due to the presence of 'put his foot in it' (a phrasal verb) and 'got off on the wrong foot' (which contains 'got off', another potential phrasal verb), the score must be penalized significantly. Score: 0 due to phrasal verb usage in at least sentences 3 and 4."
+    }
+  ]
+}
