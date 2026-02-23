@@ -25,13 +25,13 @@ eval_prompt = eval_prompt_path.read_text(encoding="utf-8")
 #results of intitial call saved here
 results_dir = Path(__file__).parent / "results"
 results_dir.mkdir(exist_ok=True)  # create folder if missing on initial run of this script.
-results_path = results_dir / "response.json"
+results_path = results_dir
 
 
 #results of evaluation saved here
 evaluation_results_dir = Path(__file__).parent / "evaluation_results"
 evaluation_results_dir.mkdir(exist_ok=True) # create folder on initial run of this script
-evaluation_results_path = evaluation_results_dir / "evaluation.json"
+evaluation_results_path = evaluation_results_dir 
 
 ##################################################################
 # Helper functions
@@ -42,7 +42,9 @@ def iterator(generate, prompt, reqs):
   # and calls the generate function for every case in request data
   # returns result of calls in a python dictionary. 
   # returned result includes both original request object and LLM response.
-    req_dict = reqs["example_requests"] #get requests and ignore metadata
+    metaData = reqs["meta"] #get metadata
+    req_dict = reqs["data"] #get requests and ignore metadata
+
     counter = 0
     cases = []
 
@@ -69,16 +71,18 @@ def iterator(generate, prompt, reqs):
 
     result = {
         "meta": {
-            "dataset_name": reqs["meta"]["dataset_name"],
-            "number_of_requests": len(reqs)
+          **metaData,
+          "number_of_cases": len(reqs)
         },
-        "cases": cases
+        "data": cases
     }
 
     return result
 
 def evaluate_iterator(generate, prompt, results):
-  cases = results["cases"] #get the cases ignore metadata
+  metaData = results["meta"]
+  cases = results["data"] #get the cases ignore metadata
+  
   evaluations = []
   for case in cases:
     # serialize request for LLM
@@ -92,12 +96,8 @@ def evaluate_iterator(generate, prompt, results):
     evaluations.append(response_obj)
   
   result = {
-    "meta":{
-      "dataset_name": results["meta"]["dataset_name"],
-      "score" : 0,
-      "number_of_cases" :len(cases),
-    },
-    "eval_results": evaluations,
+    "meta": metaData,
+    "data": evaluations,
   }
 
   return result
@@ -114,7 +114,7 @@ def save(data, file_path):
 # Main function for running the evaluation. 
 ###############################################################
 def run_eval_suite(
-  generate, # the func which calls the llm
+  generate, # the func which calls the llm (func being evalutated)
   prompt,  # system prompt for the feature (prompt being evaluated)
   reqs,  # original request object as python dict
   results_path, # location to save the results
@@ -122,6 +122,11 @@ def run_eval_suite(
   eval_prompt, # evaluation prompt
   evaluation_results_path # location to save evaluation results
   ):
+  
+  # Append file name to path for current dataset.
+  results_path = results_dir / reqs["meta"]["file_name"]
+  evaluation_results_path = evaluation_results_dir  / reqs["meta"]["file_name"]
+
 
   # Make initial call to LLM with example data
   results = iterator(generate, prompt, reqs)
@@ -134,15 +139,15 @@ def run_eval_suite(
   evaluation = evaluate_iterator(evaluate, eval_prompt, results )
 
   ##before saving average the scores of the evaluation
-  evals = evaluation["eval_results"]
+  evals = evaluation["data"]
   scores = []
 
   for eval in evals:
     scores.append(eval["score"])
   
   score_sum = sum(scores)
-  avg = score_sum / len(scores)
-  evaluation["meta"]["score"] = avg #update the metadata with the average score.
+  avg = score_sum / len(scores) if scores else 0
+  evaluation["meta"]["average_score"] = avg
   
   # save evaluation_results to file (save as json)
   save(evaluation, evaluation_results_path)

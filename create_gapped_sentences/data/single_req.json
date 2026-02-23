@@ -1,8 +1,13 @@
 {
   "meta": {
-    "dataset_name": "simple_dataset"
+    "file_name": "simple_request.json",
+    "dataset_name": "simple_dataset",
+    "number_of_cases": null,
+    "average_score":null,
+    "summary": "",
+    "description": ""
   },
-  "example_requests": [
+  "data": [
     {
       "level": "A2",
       "morphology": true,
