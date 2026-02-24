@@ -3,6 +3,7 @@ from .helpers import *
 def run_eval_suite(
   generate, # the func which calls the llm (func being evalutated)
   prompt,  # system prompt for the feature (prompt being evaluated)
+  prompt_file, #prompt file being used (added to json metadata)
   reqs,  # original request object as python dict
   results_path, # location to save the results
   evaluate, # evaluation function calls the LLM to compare req and responses
@@ -12,11 +13,10 @@ def run_eval_suite(
   
   # Append file name to path for current dataset.
   results_path = results_path / reqs["meta"]["file_name"]
-  evaluation_results_path = evaluation_results_path  / reqs["meta"]["file_name"]
 
 
   # Make initial call to LLM with example data
-  results = iterator(generate, prompt, reqs)
+  results = iterator(generate, prompt, prompt_file, reqs)
   
   # save results
   save(results, results_path)

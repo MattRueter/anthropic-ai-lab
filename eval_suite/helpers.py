@@ -3,18 +3,18 @@ import json
 # Helper functions
 # These are all called by run_eval_suite
 ##################################################################
-def iterator(generate, prompt, reqs):
+def iterator(generate, prompt, prompt_file, reqs):
   # takes system prompt and example request data
   # and calls the generate function for every case in request data
   # returns result of calls in a python dictionary. 
   # returned result includes both original request object and LLM response.
     metaData = reqs["meta"] #get metadata
-    req_dict = reqs["data"] #get requests and ignore metadata
+    req_list = reqs["data"] #get requests and ignore metadata
 
     counter = 0
     cases = []
 
-    for req in req_dict:
+    for req in req_list:
         case = {
             "id" :counter,
             "request": req,
@@ -38,7 +38,8 @@ def iterator(generate, prompt, reqs):
     result = {
         "meta": {
           **metaData,
-          "number_of_cases": len(reqs)
+          "prompt_file_name":prompt_file,
+          "number_of_cases": len(req_list)
         },
         "data": cases
     }

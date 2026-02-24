@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 import json
+import uuid
 
 @dataclass
 class EvalFeatureConfig:
@@ -30,13 +31,16 @@ def create_eval_config(
     results_dir = base_dir / "results"
     results_dir.mkdir(exist_ok=True)
 
-    evaluation_results_dir = base_dir / "evaluation_results"
+    #create unique id for each evaluation.
+    unique_id = uuid.uuid4()
+    evaluation_results_dir = base_dir /"evaluation_results"
     evaluation_results_dir.mkdir(exist_ok=True)
+    evaluation_results_path = evaluation_results_dir / f"eval_{unique_id}.json"
 
     return EvalFeatureConfig(
         req_dict=req_dict,
         prompt=prompt,
         eval_prompt=eval_prompt,
         results_path=results_dir,
-        evaluation_results_path=evaluation_results_dir,
+        evaluation_results_path=evaluation_results_path,
     )
