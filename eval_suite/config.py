@@ -6,7 +6,8 @@ import uuid
 @dataclass
 class EvalFeatureConfig:
     req_dict: dict
-    prompt: str
+    prompt: str 
+    prompt_file:str
     eval_prompt: str
     results_path: Path
     evaluation_results_path: Path
@@ -33,13 +34,14 @@ def create_eval_config(
 
     #create unique id for each evaluation.
     unique_id = uuid.uuid4()
-    evaluation_results_dir = base_dir /"evaluation_results"
+    evaluation_results_dir = base_dir / "evaluation_results"
     evaluation_results_dir.mkdir(exist_ok=True)
     evaluation_results_path = evaluation_results_dir / f"eval_{unique_id}.json"
 
     return EvalFeatureConfig(
         req_dict=req_dict,
         prompt=prompt,
+        prompt_file= prompt_file,
         eval_prompt=eval_prompt,
         results_path=results_dir,
         evaluation_results_path=evaluation_results_path,
