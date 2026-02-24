@@ -11,7 +11,9 @@ from eval_suite.config import create_eval_config
 config = create_eval_config(
     base_dir=Path(__file__).resolve().parent,
     data_file="single_req.json",
+    prompt_file="system_v2.txt"
 )
+
 # TODO decide how best to...
 # ...unpack variables.
 req_dict = config.req_dict
@@ -20,6 +22,8 @@ eval_prompt = config.eval_prompt
 results_path = config.results_path
 evaluation_results_path = config.evaluation_results_path
 
+print(prompt)
+"""
 run_eval_suite(
   generate=generate_gapped_sentences,
   prompt=prompt, 
@@ -29,4 +33,4 @@ run_eval_suite(
   eval_prompt=eval_prompt,
   evaluation_results_path=evaluation_results_path
  )
-
+"""
