@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "file_name": "starter_dataset.json",
+    "dataset_name": "starter_dataset",
+    "prompt_file_name": "system.txt",
+    "number_of_cases": 2,
+    "average_score": 4.975,
+    "summary": "",
+    "description": "Simple set of requests to test and build pipeline"
+  },
+  "data": [
+    {
+      "id": 0,
+      "score": 0.95,
+      "comment": "Both sentences are well-constructed for A2 level with formal register. 'Playing' correctly uses morphology (present participle) and fits naturally in the sentence. 'Friends' correctly uses morphology (plural form) and the sentence is contextually appropriate. Both gaps are clear and unambiguous. Slight deduction as 'The children are playing in the park after school today' is slightly informal in tone, though still acceptable."
+    },
+    {
+      "id": 1,
+      "score": 9,
+      "comment": "Both sentences are well-constructed for B2 level with an informal register. 'Establish' is used correctly in its base form in a natural context about settling in a new city. 'Brave' is used correctly as an adjective in its original form. Morphology rules are respected as both words appear in their base/original forms. The sentences are contextually meaningful and appropriately informal. Minor deduction because 'establish yourself' slightly leans toward a more formal expression, though it is commonly used in informal speech as well."
+    }
+  ]
+}

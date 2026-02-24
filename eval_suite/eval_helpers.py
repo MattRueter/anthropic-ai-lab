@@ -46,6 +46,7 @@ def iterator(generate, prompt, prompt_file, reqs):
 
     return result
 
+
 def evaluate_iterator(generate, prompt, results):
   metaData = results["meta"]
   cases = results["data"] #get the cases ignore metadata
@@ -69,6 +70,20 @@ def evaluate_iterator(generate, prompt, results):
 
   return result
 
+
 def save(data, file_path):
     with open(file_path, mode="w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)  
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def calculate_avg(evaluation:dict):
+  evals = evaluation["data"]
+  scores = []
+
+  for eval in evals:
+    scores.append(eval["score"])
+  
+  score_sum = sum(scores)
+  avg = score_sum / len(scores) if scores else 0
+
+  return avg

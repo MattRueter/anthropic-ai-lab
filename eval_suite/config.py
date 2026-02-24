@@ -31,6 +31,7 @@ def create_eval_config(
     # --- result dirs ---
     results_dir = base_dir / "results"
     results_dir.mkdir(exist_ok=True)
+    results_path = results_dir / data_file
 
     #create unique id for each evaluation.
     unique_id = uuid.uuid4()
@@ -43,6 +44,6 @@ def create_eval_config(
         prompt=prompt,
         prompt_file= prompt_file,
         eval_prompt=eval_prompt,
-        results_path=results_dir,
+        results_path=results_path,
         evaluation_results_path=evaluation_results_path,
     )
