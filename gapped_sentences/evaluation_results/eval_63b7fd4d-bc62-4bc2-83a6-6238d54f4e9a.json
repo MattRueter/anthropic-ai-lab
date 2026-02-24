@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "file_name": "starter_dataset.json",
+    "dataset_name": "starter_dataset",
+    "prompt_file_name": "system.txt",
+    "number_of_cases": 2,
+    "average_score": 9.0,
+    "summary": "",
+    "description": "Simple set of requests to test and build pipeline"
+  },
+  "data": [
+    {
+      "id": 0,
+      "score": 9,
+      "comment": "Both sentences are well-constructed and appropriate for A2 level with formal register. 'Playing' correctly uses a morphological variation (present participle) of 'play', and 'friends' correctly uses the plural form of 'friend'. Both gaps are clear and contextually appropriate. The sentences are slightly above A2 in complexity but still accessible. Minor deduction for the phrase 'school garden' which is slightly uncommon."
+    },
+    {
+      "id": 1,
+      "score": 9,
+      "comment": "Both sentences are well-constructed for B2 level with an informal register. 'Establish' is correctly used in base form in a natural conversational context with the tag question adding informality. 'Brave' is used correctly as an adjective in its original form. Morphology rules are respected as both words appear in their original uninflected forms. The sentences are clear, contextually appropriate, and the gaps are unambiguous. Minor deduction as 'establish' could arguably appear in other forms in such a context (e.g., 'establishing'), which might make the gap slightly less straightforward for learners."
+    }
+  ]
+}

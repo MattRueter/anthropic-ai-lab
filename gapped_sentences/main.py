@@ -2,8 +2,8 @@ import json
 from dotenv import load_dotenv
 from pprint import pprint
 from pathlib import Path
-from create_gapped_sentences.gapped_sentences import generate_gapped_sentences
-from create_gapped_sentences.evaluate_gapped_sentences import evaluate_gapped_sentences
+from gapped_sentences.gapped_sentences import generate_gapped_sentences
+from gapped_sentences.evaluate_gapped_sentences import evaluate_gapped_sentences
 from eval_suite.run_eval_suite import run_eval_suite
 from config import create_eval_config
 
