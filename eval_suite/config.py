@@ -5,7 +5,7 @@ import uuid
 
 @dataclass
 class EvalFeatureConfig:
-    req_dict: dict
+    dataset: dict
     prompt: str 
     prompt_file:str
     eval_prompt: str
@@ -21,8 +21,8 @@ def create_eval_config(
 ) -> EvalFeatureConfig:
 
     # --- data ---
-    req_json = (base_dir / "data" / data_file).read_text(encoding="utf-8")
-    req_dict = json.loads(req_json)
+    dataset_json = (base_dir / "data" / data_file).read_text(encoding="utf-8")
+    dataset_dict = json.loads(dataset_json)
 
     # --- prompts ---
     prompt = (base_dir / "prompts" / prompt_file).read_text(encoding="utf-8")
@@ -39,7 +39,7 @@ def create_eval_config(
     evaluation_results_path = evaluation_results_dir / f"eval_{unique_id}.json"
 
     return EvalFeatureConfig(
-        req_dict=req_dict,
+        dataset=dataset_dict,
         prompt=prompt,
         prompt_file= prompt_file,
         eval_prompt=eval_prompt,

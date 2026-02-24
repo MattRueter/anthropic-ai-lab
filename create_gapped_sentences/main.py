@@ -16,12 +16,7 @@ config = create_eval_config(
 
 run_eval_suite(
   generate=generate_gapped_sentences,
-  prompt=config.prompt,
-  prompt_file=config.prompt_file,
-  reqs=config.req_dict, 
-  results_path=config.results_path,
   evaluate=evaluate_gapped_sentences,
-  eval_prompt=config.eval_prompt,
-  evaluation_results_path=config.evaluation_results_path
+  config=config
  )
 
