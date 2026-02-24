@@ -13,7 +13,7 @@ class EvalFeatureConfig:
 
 def create_eval_config(
     base_dir: Path,
-    data_file: str,
+    data_file: str ="starter_dataset.json",
     prompt_file: str = "system.txt",
     eval_prompt_file: str = "evaluation.txt",
 ) -> EvalFeatureConfig:

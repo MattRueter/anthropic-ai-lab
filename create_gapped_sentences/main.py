@@ -10,8 +10,6 @@ from eval_suite.config import create_eval_config
 
 config = create_eval_config(
     base_dir=Path(__file__).resolve().parent,
-    data_file="single_req.json",
-    prompt_file="system_v2.txt"
 )
 
 # TODO decide how best to...

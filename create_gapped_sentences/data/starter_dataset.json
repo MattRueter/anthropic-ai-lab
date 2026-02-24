@@ -1,11 +1,12 @@
 {
   "meta": {
-    "file_name": "simple_request.json",
-    "dataset_name": "simple_dataset",
+    "file_name": "starter_dataset.json",
+    "dataset_name": "starter_dataset",
+    "prompt_file_name": null,
     "number_of_cases": null,
     "average_score":null,
     "summary": "",
-    "description": ""
+    "description": "Simple set of requests to test and build pipeline"
   },
   "data": [
     {
@@ -15,8 +16,7 @@
       "register": "formal",
       "words": [
         { "word": "play", "language": "en", "meanings": ["jugar"] },
-        { "word": "friend", "language": "en", "meanings": ["amigo"] },
-        { "word": "call", "language": "en", "meanings": ["llamar"] }
+        { "word": "friend", "language": "en", "meanings": ["amigo"] }
       ]
     },
       {
@@ -26,8 +26,7 @@
       "register": "informal",
       "words": [
         { "word": "establish", "language": "en", "meanings": ["establecer"] },
-        { "word": "brave", "language": "en", "meanings": ["valiente"] },
-        { "word": "increase", "language": "en", "meanings": ["aumentar"] }
+        { "word": "brave", "language": "en", "meanings": ["valiente"] }
       ]
     }
   ]
