@@ -8,10 +8,10 @@ def main():
         sys.exit(1)
 
     feature = sys.argv[1]
-    module_path = f"{feature}.main"
+    module_path = f"features.{feature}.main"
 
     project_root = Path(__file__).resolve().parent
-
+  
     subprocess.run([
       "python3", "-m", module_path],
       cwd=project_root
