@@ -1,5 +1,0 @@
-Use your best judgment. Do you think the keyword transformation exercises are good?
-
-**Important** Automatic 0 if any phrasal verbs are used.
-
-Your output must be in JSON with no codeblock annotations e.g. no ```json or trailing ```

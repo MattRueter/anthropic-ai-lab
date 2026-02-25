@@ -17,7 +17,9 @@ from config import create_eval_config
 
 config = create_eval_config(
     base_dir=Path(__file__).resolve().parent,
-    data_file="starter_dataset.json",
+    # data_file: str = #defaults to --> "starter_dataset.json",
+    # prompt_file: str = #defaults to --> "system.txt",
+    # eval_prompt_file: str = #defaults to --> "evaluation.txt",
 )
 
 run_eval_suite(
@@ -32,6 +34,17 @@ from dotenv import load_dotenv
 load_dotenv()
 client = anthropic.Anthropic()
 
+schema = {
+    "type": "object",
+    "properties": {
+        # replace 'response' with properties relevant to use case
+        "data": {"type":"string"}
+    },
+    "required": [],
+    "additionalProperties": False,
+}
+
+
 def generate(prompt, req):
     print("Calling Claude")
     message = client.messages.create(
@@ -39,9 +52,10 @@ def generate(prompt, req):
         max_tokens=1000,
         temperature=0.5,
         system=prompt,
-        messages=[
-            {"role": "user", "content": req}
-        ]
+        messages=[{"role": "user", "content": req}],
+        output_config={
+            "format": {"type": "json_schema", "schema": schema},
+        }
     )
     return message.content[0].text
 """,
@@ -52,13 +66,16 @@ load_dotenv()
 client = anthropic.Anthropic()
 
 schema = {
-    "type": "object",
-    "properties": {
-        # add properties specific to use case here
-    },
-    "required": [],
-    "additionalProperties": False,
+  "type": "object",
+  "properties": {
+    "id" : {"type" : "number"},
+    "score" : {"type" : "number"},
+    "comment" : {"type" : "string"}
+  },
+  "required" : ["id", "score", "comment"],
+  "additionalProperties" : False,
 }
+
 
 def evaluate(prompt, req):
     print("Calling the evaluator.")
