@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "file_name": "starter_dataset.json",
+    "dataset_name": "starter_dataset",
+    "prompt_file_name": "system.txt",
+    "number_of_cases": 1,
+    "average_score": null,
+    "summary": "",
+    "description": ""
+  },
+  "data": [
+    {
+      "id": 0,
+      "request": {
+        "word": "think",
+        "lang": "en",
+        "meanings": [
+          "pensar"
+        ]
+      },
+      "response": {
+        "response": "{\"sentences\": [{\"original\": \"In my opinion, the new policy is a mistake.\",\"key\": \"THINK\",\"sentence\": \"I _______________________ a mistake.\"},{\"original\": \"She is considered to be the best candidate for the job.\",\"key\": \"THINK\",\"sentence\": \"People _______________________ the best candidate for the job.\"},{\"original\": \"He had never considered the possibility of losing.\",\"key\": \"THOUGHT\",\"sentence\": \"He had never _______________________ the possibility of losing.\"},{\"original\": \"It is generally believed that exercise is good for your health.\",\"key\": \"THOUGHT\",\"sentence\": \"Exercise is generally _______________________ good for your health.\"},{\"original\": \"She reconsidered her decision after talking to her manager.\",\"key\": \"THOUGHT\",\"sentence\": \"She _______________________ her decision after talking to her manager.\"}]}"
+      }
+    }
+  ]
+}

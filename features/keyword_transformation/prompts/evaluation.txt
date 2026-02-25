@@ -1,0 +1,6 @@
+Use your best judgment. Do you think the keyword transformation exercises are good?
+
+
+
+
+Your output must be in JSON with no codeblock annotations e.g. no ```json or trailing ```

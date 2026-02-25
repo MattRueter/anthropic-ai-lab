@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "file_name": "starter_dataset.json",
+    "dataset_name": "starter_dataset",
+    "prompt_file_name": "system.txt",
+    "number_of_cases": 1,
+    "average_score": 7.0,
+    "summary": "",
+    "description": ""
+  },
+  "data": [
+    {
+      "id": 0,
+      "score": 7,
+      "comment": "The exercises are mostly good and test different uses of 'think/thought' well. The sentences vary nicely in structure (active, passive, past perfect). However, sentence 5 is problematic: 'reconsidered' doesn't naturally transform to a 'thought' construction (e.g., 'thought again about' is awkward). Sentence 1 is straightforward and clear. Overall, a solid set with minor issues in creativity and one questionable transformation."
+    }
+  ]
+}
