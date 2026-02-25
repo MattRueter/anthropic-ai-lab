@@ -5,7 +5,18 @@ def run_eval_suite(
   evaluate, # evaluation function calls the LLM to compare req and responses. Returns evaluation json
   config
   ):
-  
+  #Check example data has been created
+  data = config.dataset["data"]
+  if len(data) == 0 or (len(data) > 0 and data[0]["user"] == "remind me to create some data."):
+    print(
+      "--------------------------------------------------------\n"
+      "🚀 Welcome! Your feature is almost ready.\n"
+      "Please add some example data to '<your_feature_dir>data/starter_dataset.json \n"
+      "and write your prompts in 'prompts/system.txt' to get started.\n"
+      "--------------------------------------------------------"
+    )
+    return
+
   # Make initial call to LLM with example data
   results = iterator(generate, config.prompt, config.prompt_file, config.dataset)
   

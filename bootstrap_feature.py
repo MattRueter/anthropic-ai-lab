@@ -105,13 +105,13 @@ DATA_FILES = {
             "summary": "",
             "description": ""
         },
-        "data": []
+        "data": [ {"user":"remind me to create some data."} ]
     }, indent=2)
 }
 
 PROMPT_FILES = {
-    "prompts/system.txt": "Write your system prompt here.",
-    "prompts/evaluation.txt": "Write your system prompt for evaluations here."
+    "prompts/system.txt": "Write a system prompt to evaluate.",
+    "prompts/evaluation.txt": "Write an evaluation prompt."
 }
 
 
