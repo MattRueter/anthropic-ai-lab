@@ -70,14 +70,27 @@ python3 -m <feature_dir>.main
 Option 2. or create an alias:
 ```bash
 #e.g.
-alias eval='python3 main.py'
+alias evaluate='python3 main.py'
 
 #then from the root of the project run
-eval <feature_dirname>
+evaluate <feature_dirname>
 
 # This runs main.py in root of project 
 # which runs the main.py file from the directory name.
 ```
+### 5. Running the `get_started` feature
+In `features/` there is an example template feature called `get_started`. Try running `eval get_started in the terminal.
+
+You should see this...
+```txt
+--------------------------------------------------------
+🚀 Welcome! Your feature is almost ready.
+Please add some example data to '<your_feature_dir>data/starter_dataset.json'
+and write your prompts in 'prompts/system.txt' to get started.
+--------------------------------------------------------
+```
+
+
 
 ## Developing a New Feature
 Let's walk through a working on a new feature from scratch.
@@ -106,7 +119,7 @@ config = create_eval_config(
     base_dir=Path(__file__).resolve().parent,
     data_file = "dataset_v2.json",
     prompt_file = "system_v2.txt",
-    eval_prompt_file = "evaluation_v2.txt", # !This exists in the config but not yet saved in the meta data.
+    eval_prompt_file = "evaluation_v2.txt", # !This is not yet being saved in the meta data.
 )
 ```
 
