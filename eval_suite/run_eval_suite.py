@@ -11,7 +11,7 @@ def run_eval_suite(
     print(
       "--------------------------------------------------------\n"
       "🚀 Welcome! Your feature is almost ready.\n"
-      "Please add some example data to '<your_feature_dir>data/starter_dataset.json \n"
+      "Please add some example data to '<your_feature_dir>data/starter_dataset.json' \n"
       "and write your prompts in 'prompts/system.txt' to get started.\n"
       "--------------------------------------------------------"
     )
