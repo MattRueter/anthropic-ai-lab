@@ -3,23 +3,44 @@ import subprocess
 from pathlib import Path
 
 def main():
+    project_root = Path(__file__).resolve().parent
+    features_root = project_root / "features"
+
+    # Get user input
     if len(sys.argv) != 2:
-        print("Usage: eval <feature_name> OR  eval features/<feature_name>/")
+        print("Usage: eval <feature_name>  OR  eval features/<feature_name>/")
+        list_features(features_root)
         sys.exit(1)
 
     raw_input = sys.argv[1]
 
-    #Normalize input
-    feature_name = Path(raw_input).name #unpacks name of feature folder
+    # Normalize input to just the folder name
+    feature_name = Path(raw_input).name
+    feature_dir = features_root / feature_name
 
+    # Validate feature exists and has main.py
+    if not feature_dir.is_dir() or not (feature_dir / "main.py").exists():
+        print(f"Error: Feature '{feature_name}' not found or missing main.py.")
+        list_features(features_root)
+        sys.exit(1)
+    
     module_path = f"features.{feature_name}.main"
-
-    project_root = Path(__file__).resolve().parent
-  
+    
     subprocess.run([
       "python3", "-m", module_path],
       cwd=project_root
       )
+
+def list_features(features_root: Path):
+    """Print a list of available features for user convenience."""
+    if features_root.exists():
+        print("Available features:")
+        for f in sorted(features_root.iterdir()):
+            if f.is_dir() and (f / "main.py").exists():
+                print(" -", f.name)
+    else:
+        print("No 'features' directory found in project root.")
+
 
 if __name__ == "__main__":
     main()

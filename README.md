@@ -60,26 +60,34 @@ The project was designed so that within a feature's `generate.py` and `evaluate.
 The important thing is to make sure the given LLM has access to whatever creditentials are required and that it returns the data following the expected schema. 
 
 ### 4. Running a Feature Evaluation
-Each feature lives in its own directory with its own `main.py`. You can run a feature in two ways:
+Each feature lives in its own directory with its own `main.py`. You can run a feature in several ways:
 
-Option 1. From project root run:
-```
-python3 -m <feature_dir>.main
+From ***project root*** run:
+
+Option 1. Without an alias.
+```bash
+#run the main.py file passing in the feature directory name
+python3 main.py <feature_dir>
+
+#run the main.py file using autocomplete 
+python3 main.py features/<features_dir>
 ```
 
-Option 2. or create an alias:
+Option 2. Using an alias (recommended):
 ```bash
 #e.g.
 alias evaluate='python3 main.py'
 
-#then from the root of the project run
+#then run
 evaluate <feature_dirname>
 
-# This runs main.py in root of project 
-# which runs the main.py file from the directory name.
+#OR with autocomplete
+evaluate features/<feature_dirname>
 ```
+> In any case by calling thee main.py file in the project root which in turn runs the main.py the feature file.
+
 ### 5. Running the `get_started` feature
-In `features/` there is an example template feature called `get_started`. Try running `eval get_started in the terminal.
+In `features/` there is an example template feature called `get_started`. Try running `evaluate get_started` in the terminal.
 
 You should see this...
 ```txt
