@@ -15,8 +15,8 @@ config = create_eval_config(
 )
 
 run_eval_suite(
-  generate=generate_gapped_sentences,
-  evaluate=evaluate_gapped_sentences,
+  generate=generate,
+  evaluate=evaluate,
   config=config
  )
 

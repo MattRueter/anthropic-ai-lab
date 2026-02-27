@@ -16,7 +16,7 @@ schema = {
 }
 
 
-def evaluate_gapped_sentences(prompt, req):
+def evaluate(prompt, req):
 
   print("Calling the evaluator.")
 

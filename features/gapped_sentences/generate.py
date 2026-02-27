@@ -31,7 +31,7 @@ schema = {
 
 
 
-def generate_gapped_sentences(prompt, req):
+def generate(prompt, req):
   # Make a call to LLM with a single prompt and requst.
   print("Calling Claude")
 

@@ -7,7 +7,7 @@ def run_eval_suite(
   ):
   #Check example data has been created
   data = config.dataset["data"]
-  if len(data) == 0 or (len(data) > 0 and data[0]["user"] == "remind me to create some data."):
+  if not data or  data[0].get("user") == "remind me to create some data.":
     print(
       "--------------------------------------------------------\n"
       "🚀 Welcome! Your feature is almost ready.\n"
