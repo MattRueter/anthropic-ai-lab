@@ -8,7 +8,7 @@ schema = {
     "type": "object",
     "properties": {
         # replace 'response' with properties relevant to use case
-        "data": {"type":"string"}
+        "llm": {"type":"string"}
     },
     "required": [],
     "additionalProperties": False,

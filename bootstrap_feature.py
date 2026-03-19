@@ -37,8 +37,8 @@ client = anthropic.Anthropic()
 schema = {
     "type": "object",
     "properties": {
-        # replace 'response' with properties relevant to use case
-        "data": {"type":"string"}
+        # replace object assigned to "llm" with properties relevant to use case
+        "llm": {"type":"string"} #update this to match the output you expect.
     },
     "required": [],
     "additionalProperties": False,
