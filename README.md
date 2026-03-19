@@ -1,5 +1,5 @@
 # AI Prompt Evaluation
-A prompt evaluation pipeline for evaluating AI prompts.
+
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ A prompt evaluation pipeline for evaluating AI prompts.
 
 ## Overview
 
-This project is a feature-based prompt evaluation pipeline. It allows you to define use-case-specific features, generate structured JSON outputs from LLMs, and evaluate those outputs against a separate evaluation prompt. The system ensures reproducible, schema-enforced testing of prompts, making it easier to iterate and compare performance across prompts and models.
+This project is a feature-based prompt evaluation pipeline. It allows you to define use-case-specific features (a feature you may be implementing in another project which requires LLM calls), generate structured JSON outputs from LLMs, and evaluate those outputs against a separate evaluation prompt. The system ensures reproducible, schema-enforced testing of prompts, making it easier to iterate and compare performance across prompts and models.
 
 ### Motivation / Why This Exists
 
@@ -44,12 +44,11 @@ source .venv/bin/activate
 #install dependencies
 pip install -r requirements.txt
 
-#run the environment
-source .venv/bin/activate
 
-#terminate environment
+#terminate environment when you've finished a session.
 deactivate
 ```
+
 ### 3. Add LLM API key to .env
 This project uses Anthropic by default. This requires creating an Anthropic account and generating an API key. The .env is loaded into the project and Anthropic's Python SDK automatically looks for a `ANTHROPIC_API_KEY` variable. 
 ```bash
@@ -75,16 +74,17 @@ python3 main.py features/<features_dir>
 
 Option 2. Using an alias (recommended):
 ```bash
-#e.g.
+#e.g. the alias I use.
 alias evaluate='python3 main.py'
 
-#then run
+#then run (from the root of the project)
 evaluate <feature_dirname>
 
 #OR with autocomplete
 evaluate features/<feature_dirname>
 ```
-> In any case by calling thee main.py file in the project root which in turn runs the main.py the feature file.
+
+> In any calling the main.py file in the project root in turn runs the main.py the feature file.
 
 ### 5. Running the `get_started` feature
 In `features/` there is an example template feature called `get_started`. Try running `evaluate get_started` in the terminal.
@@ -101,20 +101,86 @@ and write your prompts in 'prompts/system.txt' to get started.
 
 
 ## Developing a New Feature
-Let's walk through a working on a new feature from scratch.
+Let's walk through working on a new feature from scratch.
 
 ### 1. Run the following in the CLI
-
-### 2. Add data to the data/starter_dataset.json
-
+```bash
+python3 bootstrap_feature introductions
+```
+### 2. Add data. 
++ `introductions/data/starter_dataset.json`
+```json
+  "data": [
+    {
+      "user": "Hello my name is Matt. Nice to meet you."
+    },
+    {
+      "user" : "I am building my first feature directory."
+    }
+  ]
+```
 ### 3. Create system and evaluation prompts
++ `introductions/prompts/system.txt`
+```
+You are a friendly chatbot. If a user introduces themselves by name, respond with the following sentence.
 
-### 4. Define JSON schema for expected LLM output
+"Hello, I am Claude. Nice to meet you."
 
-### 5. Run initial evaluation
 
-### 6. View results
+If they haven't introduced themselves by name, then just respond with a rhyming couplet.
 
+```
++ `introductions/prompts/evaluation.txt`
+```
+You are a response grading LLM in a prompte engineering pipeline. Below ar the rules for giving a score to the response you are evaluating.
+
+<RULES FOR SCORING RESPONSES TO INTRODUCTIONS>
+
+If the user has introduced themselves by name and the response isn't EXACTLY "Hello, I am Claude. Nice to meet you.", 
+score is automatically 0
+
+If the user has introduced themselves by name and the response is "Hello, I am Claude. Nice to meet you.",
+Score is 10
+
+</RULES FOR SCORING RESPONSES TO INTRODUCTIONS>
+
+<RULES FOR SCORING RESPONSES TO NON INTRODUCTIONS>
+
+If the user hasn't introduced themselves and ther response is anything else besides a rhyming couplet, 
+score is automatically 0.
+
+If response is couplet but doesn't rhyme , 
+score is 5
+
+</RULES FOR SCORING RESPONSES TO NON INTRODUCTIONS>
+
+```
+
+### 4. Run initial evaluation
+```bash
+#from root of project run
+python3 main.py introductions
+```
+### 5. View results
++ open up the `introductions/evaluation_results` directory and there should be a file with a uuid. Open it to see the results of the evaluation and average scroe.
++ you can also view the original requests/responses in `introductions/results/`
+
+
+## Output Schema
+You may want output to be something other then a string. You can enforce this by updating the schema used for the generate call.
++ `<feature>/generate.py`
+```python
+schema = {
+    "type": "object",
+    "properties": {
+        # replace object assigned to "llm" with properties relevant to use case
+        "llm": {"type":"string"} #update this to match the output you expect.
+    },
+    "required": [],
+    "additionalProperties": False,
+}
+
+```
 
 ## Adding Differnet Datasets and Prompt versions
 The config found in /config.py uses `data/starter_dataset.json` , `prompts/system.txt` and `prompts/evaluation.txt` by default. You can overide these by changing the config in `<your_feature>/main.py`
@@ -149,3 +215,9 @@ The meta data in your output will now include those file names for easier refere
 >
 > You may only ever want to use one dataset file and one system.txt file but the project supports 
 > various dataset and prompt files for granularity.
+
+## Future updates
+Some things I'd like to add eventually:
++ sorting/filtering cli commands for better reviewing the results
++ open up a browser window to view results (with and without sorting/filtering)
++ create a package or make easier to "drop in" a workplace (so users don't have to store prompt and LLM config in two separte places). This would be nice as the prompt-eval-pipeline can live next to the project which has all of the features using LLM calls that require the testing.
