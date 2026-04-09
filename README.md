@@ -106,7 +106,7 @@ Let's walk through working on a new feature from scratch.
 
 ### 1. Run the following in the CLI
 ```bash
-bootstrap-feature introductions
+new introductions
 ```
 ### 2. Add data. 
 + `introductions/data/starter_dataset.json`
