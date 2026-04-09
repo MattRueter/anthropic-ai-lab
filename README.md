@@ -45,6 +45,9 @@ source .venv/bin/activate
 # install dependencies
 pip install -r requirements.txt
 
+# install CLI entry points (evaluate, new)
+pip install -e .
+
 
 # terminate environment when you've finished a session
 deactivate
@@ -73,12 +76,9 @@ python3 main.py <feature_dir>
 python3 main.py features/<feature_dir>
 ```
 
-Option 2. Using an alias (recommended):
+Option 2. Using the installed CLI entry point (recommended):
 ```bash
-# e.g. the alias I use
-alias evaluate='python3 main.py'
-
-# then run (from the root of the project)
+# run (from the root of the project)
 evaluate <feature_dirname>
 
 # or with autocomplete
@@ -106,7 +106,7 @@ Let's walk through working on a new feature from scratch.
 
 ### 1. Run the following in the CLI
 ```bash
-python3 bootstrap_feature.py introductions
+bootstrap-feature introductions
 ```
 ### 2. Add data. 
 + `introductions/data/starter_dataset.json`
@@ -162,7 +162,7 @@ score is 5
 ### 4. Run initial evaluation
 ```bash
 #from root of project run
-python3 main.py introductions
+evaluate introductions
 ```
 ### 5. View results
 + Open `introductions/evaluation_results/` and look for a file with a UUID. Open it to review evaluation results and average score.

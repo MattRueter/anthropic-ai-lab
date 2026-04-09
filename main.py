@@ -8,7 +8,11 @@ def main():
 
     # Get user input
     if len(sys.argv) != 2:
-        print("Usage: eval <feature_name>  OR  eval features/<feature_name>/")
+        print(
+            "You need to include a feature directory as an argument.\n"
+            "Usage: evaluate <feature_name>  OR  evaluate features/<feature_name>/\n"
+            "       python3 main.py <feature_name>  OR  python3 main.py features/<feature_name>/"
+        )
         list_features(features_root)
         sys.exit(1)
 

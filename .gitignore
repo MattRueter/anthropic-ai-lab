@@ -3,4 +3,5 @@ claude-env/
 .env
 __init__.py
 __pycache__
+*.egg-info/
 notes.md

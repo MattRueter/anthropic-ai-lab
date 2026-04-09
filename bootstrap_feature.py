@@ -147,7 +147,10 @@ def create_feature(feature_name: str):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python bootstrap_feature.py <feature_name>")
+        print(
+            "Usage: bootstrap-feature <feature_name>\n"
+            "       python3 bootstrap_feature.py <feature_name>"
+        )
         sys.exit(1)
 
     feature_name = sys.argv[1]
